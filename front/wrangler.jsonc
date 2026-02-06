@@ -1,0 +1,26 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "ferriskey-front",
+  "compatibility_date": "2026-02-01",
+  "compatibility_flags": ["nodejs_compat"],
+  
+  // 自定义域名配置
+  "routes": [
+    {
+      "pattern": "auth.longcipher.com",
+      "custom_domain": true
+    }
+  ],
+
+  // 静态资源配置
+  "assets": {
+    "directory": "./dist",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "single-page-application"
+  },
+
+  // 环境变量
+  "vars": {
+    "VITE_API_URL": "https://ferriskey-api.longcipher.com"
+  }
+}
