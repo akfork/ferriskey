@@ -1358,7 +1358,7 @@ mod tests {
                 .unwrap()
                 .expect_create()
                 .withf(move |req| req.realm_id == new_realm_id)
-                .times(7)
+                .times(8)
                 .returning(move |req| {
                     let req = req.clone();
                     Box::pin(async move {
@@ -1375,7 +1375,7 @@ mod tests {
                 .unwrap()
                 .expect_create()
                 .withf(|_| true)
-                .times(8)
+                .times(10)
                 .returning(|req| {
                     let req = req.clone();
                     Box::pin(async move {
@@ -1392,7 +1392,7 @@ mod tests {
                 .unwrap()
                 .expect_assign_scope_to_client()
                 .withf(|_, _, is_default, is_optional| *is_optional != *is_default)
-                .times(7)
+                .times(8)
                 .returning(|client_id, scope_id, is_default, _is_optional| {
                     Box::pin(async move {
                         Ok(ClientScopeMapping {
